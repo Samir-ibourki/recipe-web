@@ -1,3 +1,4 @@
+import { Colors } from "../themes/color";
 export default function Featured() {
   return (
     <section className="w-[95vw] mx-auto h-[93vh] my-8 rounded-2xl   ">
@@ -28,28 +29,24 @@ export default function Featured() {
           </span>
 
           <div className="flex justify-between items-end">
-<div className="flex items-center gap-[1rem] mt-[7rem] ">
-    <img className="w-[4rem] rounded-full  " src="/assets/adam.png" alt="" />
-    <span>
-        <h3 className="font-bold mb-2 text-[1.4rem] ">John Smith</h3>
-        <p className="font-semibold text-[#00000099]">15 march 2026</p>
-    </span>
-</div>
+            <div className="flex items-center gap-[1rem] mt-[7rem] ">
+              <img
+                className="w-[4rem] rounded-full  "
+                src="/assets/adam.png"
+                alt=""
+              />
+              <span>
+                <h3 className="font-bold mb-2 text-[1.4rem] ">John Smith</h3>
+                <p className="font-semibold text-[#00000099]">15 march 2026</p>
+              </span>
+            </div>
 
-<div>
-    <button className="text-[white] bg-[black] p-[1rem] shadow-lg rounded-xl transform cursor-pointer hover:translate-y-[-8%] hover:duration-300 hover:ease-linear  ">
-        View Recipes <i class="fa-solid fa-circle-play"></i>
-    </button>
-</div>
+            <div>
+              <button className="text-[white] bg-[black] p-[1rem] shadow-lg rounded-xl transform cursor-pointer hover:translate-y-[-8%] hover:duration-300 hover:ease-linear  ">
+                View Recipes <i class="fa-solid fa-circle-play"></i>
+              </button>
+            </div>
           </div>
-
-
-
-
-
-
-
-
         </div>
 
         <div className="w-[60%] h-[100%] bg-[url('/assets/bg.jpg')] bg-cover bg-[75%] bg-no-repeat "></div>
