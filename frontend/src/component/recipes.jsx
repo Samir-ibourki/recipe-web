@@ -1,6 +1,31 @@
-import recipes from "../data/recipes.json";
+// import recipes from "../data/recipes.json";
+import { useRecipes } from "../hooks/useRecipes";
 
 export default function Recipes() {
+  const {data:recipes, isLoading, error} = useRecipes()
+  if (isLoading) {
+    return (
+      <section className="w-[95vw] mx-auto my-[4rem] text-center">
+        <p className="text-2xl">Chargement des recettes...</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="w-[95vw] mx-auto my-[4rem] text-center">
+        <p className="text-red-500 text-2xl">Erreur: {error.message}</p>
+      </section>
+    );
+  }
+
+  if (!recipes || recipes.length === 0) {
+    return (
+      <section className="w-[95vw] mx-auto my-[4rem] text-center">
+        <p className="text-2xl">Aucune recette trouvée</p>
+      </section>
+    );
+  }
   return (
     <section className="w-[95vw] mx-auto my-[4rem]">
       <div className="text-center mb-[3rem]">
@@ -17,12 +42,12 @@ export default function Recipes() {
         {recipes.map((recipe) => (
           <div
             key={recipe.id}
-            className="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow cursor-pointer"
+            className="bg-[#E7FAFE] rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow cursor-pointer"
           >
             {/*image*/}
             <div className="h-[16rem] overflow-hidden">
               <img
-                src={recipe.img}
+                src={recipe.imageUrl}
                 alt={recipe.title}
                 className="w-full h-full object-cover"
               />
@@ -37,7 +62,7 @@ export default function Recipes() {
               <div className="flex justify-between items-center text-[#00000099]">
                 <span className="flex items-center gap-2">
                   <i className="fa-solid fa-clock text-lg"></i>
-                  <p>{recipe.time}</p>
+                  <p>{recipe.prepTime} Minutes</p>
                 </span>
                 <span className="flex items-center gap-2">
                   <i className="fa-solid fa-utensils text-lg"></i>

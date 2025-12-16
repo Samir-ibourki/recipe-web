@@ -109,5 +109,5 @@ export const runRecipeSeeders = async () => {
     },
   ]);
 
-  console.log("recettes seedes avec succes, (10+ recettes)");
+  console.log("recettes seedes avec succes, (9+ recettes)");
 };

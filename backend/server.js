@@ -12,7 +12,7 @@ import "./models/Recipe.js";
 import { runRecipeSeeders } from "./seeders/recipeseeders.js";
 
 sequelize
-  .sync({ alter: true })
+  .sync({ force: true })
   .then(async () => {
     await runRecipeSeeders();
     console.log("databased synced successfully !");

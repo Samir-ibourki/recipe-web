@@ -10,11 +10,11 @@ const Recipe = sequelize.define("Recipe", {
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  image_url: {
+  imageUrl: {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  preparationTime: {
+  prepTime: {
     type: DataTypes.STRING,
     allowNull: false,
     defaultValue: "30 Minutes",
