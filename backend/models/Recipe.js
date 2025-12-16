@@ -10,7 +10,7 @@ const Recipe = sequelize.define("Recipe", {
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  image: {
+  image_url: {
     type: DataTypes.STRING,
     allowNull: true,
   },
