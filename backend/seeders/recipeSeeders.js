@@ -10,8 +10,9 @@ export const runRecipeSeeders = async () => {
   await Recipe.bulkCreate([
     {
       title: "Big and Juicy Wagyu Beef Cheeseburger",
-      description: "Burger premium avec wagyu",
-      ingredients: "Wagyu beef, cheese, lettuce, tomato, bun",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat harum quae tempora eaque? Similique deserunt, quia obcaecati, explicabo ratione enim cumque quo ad maxime sit sed. Provident, ad itaque.",
+      ingredients: "lore",
       instructions: "Grill the beef, add cheese, assemble...",
       prepTime: 15,
       cookTime: 10,
@@ -21,7 +22,8 @@ export const runRecipeSeeders = async () => {
     },
     {
       title: "Fresh Lime Roasted Salmon with Ginger Sauce",
-      description: "Saumon frais au citron vert",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat harum quae tempora eaque? Similique deserunt, quia obcaecati, explicabo ratione enim cumque quo ad maxime sit sed. Provident, ad itaque.",
       ingredients: "Salmon, lime, ginger, soy sauce",
       instructions: "Marinate and roast...",
       prepTime: 20,
@@ -32,7 +34,8 @@ export const runRecipeSeeders = async () => {
     },
     {
       title: "Strawberry Oatmeal Pancake with Honey Syrup",
-      description: "Pancakes aux fraises et miel",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat harum quae tempora eaque? Similique deserunt, quia obcaecati, explicabo ratione enim cumque quo ad maxime sit sed. Provident, ad itaque.",
       ingredients: "Oats, strawberries, honey, milk",
       instructions: "Mix and cook...",
       prepTime: 10,
@@ -43,7 +46,8 @@ export const runRecipeSeeders = async () => {
     },
     {
       title: "Fresh and Healthy Mixed Mayonnaise Salad",
-      description: "Pancakes aux fraises et miel",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat harum quae tempora eaque? Similique deserunt, quia obcaecati, explicabo ratione enim cumque quo ad maxime sit sed. Provident, ad itaque.",
       ingredients: "Oats, strawberries, honey, milk",
       instructions: "Mix and cook...",
       prepTime: 10,
@@ -54,7 +58,8 @@ export const runRecipeSeeders = async () => {
     },
     {
       title: "Chicken Meatballs with Cream Cheese",
-      description: "Pancakes aux fraises et miel",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat harum quae tempora eaque? Similique deserunt, quia obcaecati, explicabo ratione enim cumque quo ad maxime sit sed. Provident, ad itaque.",
       ingredients: "Oats, strawberries, honey, milk",
       instructions: "Mix and cook...",
       prepTime: 10,
@@ -65,7 +70,8 @@ export const runRecipeSeeders = async () => {
     },
     {
       title: "Chicken Meatballs with Cream Cheese",
-      description: "Pancakes aux fraises et miel",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat harum quae tempora eaque? Similique deserunt, quia obcaecati, explicabo ratione enim cumque quo ad maxime sit sed. Provident, ad itaque.",
       ingredients: "Oats, strawberries, honey, milk",
       instructions: "Mix and cook...",
       prepTime: 10,
@@ -76,7 +82,8 @@ export const runRecipeSeeders = async () => {
     },
     {
       title: "Fruity Pancake with Orange & Blueberry",
-      description: "Pancakes aux fraises et miel",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat harum quae tempora eaque? Similique deserunt, quia obcaecati, explicabo ratione enim cumque quo ad maxime sit sed. Provident, ad itaque.",
       ingredients: "Oats, strawberries, honey, milk",
       instructions: "Mix and cook...",
       prepTime: 10,
@@ -87,7 +94,8 @@ export const runRecipeSeeders = async () => {
     },
     {
       title: "The Best Easy One Pot Chicken and Rice",
-      description: "Pancakes aux fraises et miel",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat harum quae tempora eaque? Similique deserunt, quia obcaecati, explicabo ratione enim cumque quo ad maxime sit sed. Provident, ad itaque.",
       ingredients: "Oats, strawberries, honey, milk",
       instructions: "Mix and cook...",
       prepTime: 10,
@@ -98,7 +106,8 @@ export const runRecipeSeeders = async () => {
     },
     {
       title: "The Creamiest Creamy Chicken and Bacon Pasta",
-      description: "Pancakes aux fraises et miel",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat harum quae tempora eaque? Similique deserunt, quia obcaecati, explicabo ratione enim cumque quo ad maxime sit sed. Provident, ad itaque.",
       ingredients: "Oats, strawberries, honey, milk",
       instructions: "Mix and cook...",
       prepTime: 10,

@@ -1,4 +1,5 @@
 import { Colors } from "../themes/color";
+import Johnsmith from "./johnsmith";
 
 export default function Featured() {
   return (
@@ -33,17 +34,7 @@ export default function Featured() {
 
           {/*bloc adam smith*/}
           <div className="absolute bottom-[3rem] left-[3rem] right-[3rem] flex justify-between items-end">
-            <div className="flex items-center gap-[1rem]">
-              <img
-                className="w-[4rem] h-[4rem] rounded-full"
-                src="/assets/adam.png"
-                alt=""
-              />
-              <span>
-                <h3 className="font-bold mb-2 text-[1.4rem]">John Smith</h3>
-                <p className="font-semibold text-[#00000099]">15 march 2026</p>
-              </span>
-            </div>
+            <Johnsmith />
 
             <div>
               <button className="text-[white] bg-[black] px-[2rem] py-[1rem] shadow-lg rounded-xl cursor-pointer hover:-translate-y-2 transition-all duration-300 flex items-center gap-2">
