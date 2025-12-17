@@ -18,7 +18,7 @@ export default function Category() {
         </button>
       </div>
 
-      <div className="flex  gap-6 justify-items-center">
+      <div className="flex  gap-6 justify-between">
         {categorys.map((item) => {
           return (
             <div

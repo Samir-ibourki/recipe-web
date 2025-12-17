@@ -2,7 +2,7 @@ import Johnsmith from "./johnsmith";
 
 export default function RecipeDetail() {
   return (
-    <div className="max-w-[1200px] mx-auto p-[2.5rem]">
+    <div className="max-w-[95vw] mx-auto p-[2.5rem]">
       {/*title */}
       <div className="mb-[2.5rem]">
         <h1 className="text-[3rem] font-semibold capitalize mt-[2rem] ">
