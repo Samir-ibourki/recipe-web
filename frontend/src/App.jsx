@@ -6,12 +6,15 @@ import Home from "./components/Home";
 import AdminLayout from "./components/admin/AdminLayout";
 import Dashboard from "./components/admin/Dashboard";
 import RecipeForm from "./components/admin/RecipeForm";
+import Header from "./components/Header";
 
 function App() {
   return (
  
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
         <Route path="/recipes/:id" element={<RecipeDetail />} />
 
         {/* Admin Routes */}
@@ -21,7 +24,7 @@ function App() {
           <Route path="edit/:id" element={<RecipeForm />} />
         </Route>
       </Routes>
-  
+    </>
   );
 }
 

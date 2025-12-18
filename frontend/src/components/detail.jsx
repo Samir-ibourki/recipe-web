@@ -150,12 +150,12 @@ export default function RecipeDetail() {
           </div>
 
           {/* Two Column Layout for Ingredients/Directions & Sidebar */}
-          <div className="flex flex-col lg:flex-row gap-16 mt-16">
-            <div className="w-full lg:w-[65%]">
+          <div className="flex justify-between mt-16">
+            <div className="w-[65%]">
                <Ingredients ingredients={recipe.ingredients} />
                <Directions instructions={recipe.instructions} />
             </div>
-            <div className="w-full lg:w-[30%]">
+            <div className="w-[30%]">
                <OtherRecipes currentId={id} />
             </div>
           </div>
