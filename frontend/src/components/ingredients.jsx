@@ -1,97 +1,57 @@
-import Check from "./check";
+export default function Ingredients({ ingredients }) {
+  if (!ingredients) return null;
 
-export default function Ingridients() {
-  const otherRecipes = [
-    {
-      image: "/assets/recip/recip2.png",
-      title: "Chicken Meatball with Creamy Chees...",
-      author: "By Andreas Paula",
-    },
-    {
-      image: "/assets/recip/recip3.png",
-      title: "The Creamiest Creamy Chicken an...",
-      author: "By Andreas Paula",
-    },
-    {
-      image: "/assets/recip/recip4.png",
-      title: "The Best Easy One Pot Chicken and Rice",
-      author: "By Andreas Paula",
-    },
-  ];
+  // Helper to render a list of items
+  const renderList = (items) => (
+    <ul className="space-y-6">
+       {items.map((item, index) => (
+        <li key={index} className="flex items-start gap-4 pb-6 border-b border-gray-100 last:border-0">
+          <div className="relative flex items-center pt-1">
+             <input 
+               type="checkbox" 
+               className="peer h-6 w-6 cursor-pointer appearance-none rounded-full border-2 border-gray-200 checked:border-black checked:bg-black transition-all"
+             />
+             <i className="fa-solid fa-check absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[calc(50%-2px)] text-white text-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity"></i>
+          </div>
+          <span className="text-gray-600 text-lg flex-1 leading-relaxed line-through-checked peer-checked:text-black peer-checked:line-through transition-all">{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
 
+  // Parse if it's a string (backwards compatibility)
+  let parsedIngredients = ingredients;
+  if (typeof ingredients === 'string') {
+     try {
+        parsedIngredients = JSON.parse(ingredients);
+     } catch (e) {
+        // Treat as single plain string or comma separated if parse fails
+        return (
+           <div className="mt-8">
+              <h2 className="text-3xl font-bold mb-8">Ingredients</h2>
+              <p className="text-gray-600">{ingredients}</p>
+           </div>
+        );
+     }
+  }
+
+  // Handle array of sections structure vs flat array
+  const isStructured = Array.isArray(parsedIngredients) && parsedIngredients.length > 0 && typeof parsedIngredients[0] === 'object' && 'title' in parsedIngredients[0];
+  
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-        
-      <div className="max-w-6xl mx-auto">
-        <div className="flex gap-8">
-          {/*ingredients section */}
-          <div className="flex-1">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Ingredients
-            </h2>
-
-            {/*for main dish */}
-            <div className="mb-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                For main dish
-              </h3>
-              <div className="space-y-3">
-                <Check />
-                <hr style={{color:'#eee'}} />
-                <Check />
-                <hr style={{color:'#eee'}} />
-                <Check />
-                <hr style={{color:'#eee'}} />
-                <Check />
-                <hr style={{color:'#eee'}} />
-              </div>
-            </div>
-
-            {/* for the sauce */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                For the sauce
-              </h3>
-              <div className="space-y-3">
-                <Check />
-                <hr style={{color:'#eee'}} />
-                <Check />
-                <hr style={{color:'#eee'}} />
-                <Check />
-                <hr style={{color:'#eee'}} />
-              </div>
-            </div>
+    <div className="mt-12">
+      <h2 className="text-3xl font-bold mb-8">Ingredients</h2>
+      
+      {isStructured ? (
+        parsedIngredients.map((section, idx) => (
+          <div key={idx} className="mb-10">
+            <h3 className="text-xl font-bold mb-6">{section.title}</h3>
+            {renderList(section.items)}
           </div>
-
-          {/* other recipe section */}
-          <div className="w-[400px]">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Other Recipe
-            </h2>
-            <div className="space-y-6">
-              {otherRecipes.map((recipe, index) => (
-                <div
-                  key={index}
-                  className="flex gap-4 cursor-pointer hover:opacity-80 transition-opacity"
-                >
-                  <img
-                    src={recipe.image}
-                    alt={recipe.title}
-                    className="w-40 h-28 object-cover rounded-xl"
-                  />
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 leading-tight">
-                      {recipe.title}
-                    </h3>
-                    <p className="text-sm font-semibold text-gray-400">{recipe.author}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </div>
+        ))
+      ) : (
+        renderList(Array.isArray(parsedIngredients) ? parsedIngredients : [])
+      )}
     </div>
   );
 }

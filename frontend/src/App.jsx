@@ -1,21 +1,27 @@
+import {  Route, Routes } from "react-router-dom";
 import "./App.css";
-import Category from "./components/category";
+
 import RecipeDetail from "./components/detail";
-import Directions from "./components/directions";
-import Featured from "./components/featured";
-import Ingredients from "./components/ingredients";
-import Recipes from "./components/recipes";
+import Home from "./components/Home";
+import AdminLayout from "./components/admin/AdminLayout";
+import Dashboard from "./components/admin/Dashboard";
+import RecipeForm from "./components/admin/RecipeForm";
 
 function App() {
   return (
-    <>
-      <Featured />
-      <Category />
-      <Recipes />
-      <RecipeDetail />
-      <Ingredients />
-      <Directions/>
-    </>
+ 
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recipes/:id" element={<RecipeDetail />} />
+
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="create" element={<RecipeForm />} />
+          <Route path="edit/:id" element={<RecipeForm />} />
+        </Route>
+      </Routes>
+  
   );
 }
 

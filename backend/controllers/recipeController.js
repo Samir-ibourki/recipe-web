@@ -7,7 +7,11 @@ export const getAllRecipes = async (req, res) => {
 
 export const getRecipeById = async (req, res) => {
   const recipe = await Recipe.findByPk(req.params.id);
-  res.json(recipe || { error: "Not found" });
+  if (recipe) {
+    res.json(recipe);
+  } else {
+    res.status(404).json({ error: "Not found" });
+  }
 };
 
 export const createRecipe = async (req, res) => {

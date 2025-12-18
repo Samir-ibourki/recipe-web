@@ -10,15 +10,15 @@ export default function Category() {
     "bg-pink-50",
   ];
   return (
-    <section className="w-[95vw] mx-auto mb-[5rem] py-8">
+    <section className="w-[95vw] mx-auto lg:mb-[5rem] py-8">
       <div className="flex justify-between items-center mb-[2rem]">
         <h1 className="text-[2.4rem] font-bold">Categories</h1>
         <button className="bg-[#E7FAFE] hover:bg-[#d0f5fb] transition-colors px-8 py-3 cursor-pointer rounded-full text-[1rem] font-semibold text-cyan-800">
           View All Categories
         </button>
       </div>
-
-      <div className="flex  gap-6 justify-between">
+{/* flex  gap-6 lg:justify-between */}
+      <div  className=" grid lg:grid-rows-1 lg:grid-cols-6 gap-6 lg:justify-between ">
         {categorys.map((item) => {
           return (
             <div

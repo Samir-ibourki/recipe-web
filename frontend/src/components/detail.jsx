@@ -1,12 +1,41 @@
+import { useParams, Link } from "react-router-dom";
+import { useRecipeById } from "../hooks/useRecipeById";
 import Johnsmith from "./johnsmith";
+import Ingredients from "./ingredients";
+import Directions from "./directions";
+import OtherRecipes from "./OtherRecipes";
 
 export default function RecipeDetail() {
+  const { id } = useParams();
+  const { data: recipe, isLoading, error } = useRecipeById(id);
+  if (isLoading) {
+    return (
+      <div className="text-center py-32 text-3xl">
+        Chargement de la recette...
+      </div>
+    );
+  }
+
+  if (error || !recipe) {
+    return (
+      <div className="text-center py-32 text-3xl text-red-500">
+        Recette non trouvée
+      </div>
+    );
+  }
   return (
     <div className="max-w-[95vw] mx-auto p-[2.5rem]">
+      <Link
+        to="/"
+        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors group"
+      >
+        <i className="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+        <span className="font-semibold text-lg">Back to Home</span>
+      </Link>
       {/*title */}
       <div className="mb-[2.5rem]">
         <h1 className="text-[3rem] font-semibold capitalize mt-[2rem] ">
-          loermlorem lorem lorem{" "}
+          {recipe.title}
         </h1>
 
         <div className="flex justify-between items-center mt-[1.2rem] ">
@@ -16,19 +45,19 @@ export default function RecipeDetail() {
               <i className="fa-solid fa-clock text-lg"></i>
               <span>
                 <p className="font-bold  ">PREP TIME</p>
-                <p>20 Minutes</p>
+                <p>{recipe.prepTime}</p>
               </span>
             </span>
             <span className="flex items-center gap-4">
               <i className="fa-solid fa-clock text-lg"></i>
               <span>
                 <p className="font-bold  ">COOK TIME</p>
-                <p>20 Minutes</p>
+                <p>{recipe.cookTime}</p>
               </span>
             </span>
             <span className="flex items-center gap-2">
               <i className="fa-solid fa-utensils text-lg"></i>
-              <p>Meat</p>
+              <p>{recipe.category}</p>
             </span>
           </div>
 
@@ -45,14 +74,14 @@ export default function RecipeDetail() {
             {/* image section */}
             <div className="relative w-[65%] h-[30rem]">
               <img
-                src="/assets/recip/recip1.png"
-                alt="Recipe dish"
+                src={recipe.imageUrl}
+                alt={recipe.title}
                 className="w-full h-full object-cover rounded-2xl"
               />
               {/*play button */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <button className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
-                  <i class="fa-solid fa-play"></i>
+                  <i className="fa-solid fa-play"></i>
                 </button>
               </div>
             </div>
@@ -67,28 +96,40 @@ export default function RecipeDetail() {
                 <div className="flex justify-between items-center">
                   <span className="text-gray-700">Calories</span>
                   <span className="font-semibold text-gray-900">
-                    219.9 kcal
+                    {recipe.nutrition?.calories || "N/A"}
                   </span>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-700">Total Fat</span>
-                  <span className="font-semibold text-gray-900">10.7 g</span>
+                  <span className="font-semibold text-gray-900">
+                    {" "}
+                    {recipe.nutrition?.fat || "N/A"}
+                  </span>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-700">Protein</span>
-                  <span className="font-semibold text-gray-900">7.9 g</span>
+                  <span className="font-semibold text-gray-900">
+                    {" "}
+                    {recipe.nutrition?.protein || "N/A"}
+                  </span>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-700">Carbohydrate</span>
-                  <span className="font-semibold text-gray-900">22.3 g</span>
+                  <span className="font-semibold text-gray-900">
+                    {" "}
+                    {recipe.nutrition?.fat || "N/A"}
+                  </span>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-700">Cholesterol</span>
-                  <span className="font-semibold text-gray-900">374 mg</span>
+                  <span className="font-semibold text-gray-900">
+                    {" "}
+                    {recipe.nutrition?.protein || "N/A"}
+                  </span>
                 </div>
               </div>
 
@@ -101,18 +142,24 @@ export default function RecipeDetail() {
             </div>
           </div>
 
-          {/*loremIpsum text */}
+          {/* Description */}
           <div className="mt-8 max-w-6xl">
             <p className="text-gray-700 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              {recipe.description}
             </p>
           </div>
+
+          {/* Two Column Layout for Ingredients/Directions & Sidebar */}
+          <div className="flex flex-col lg:flex-row gap-16 mt-16">
+            <div className="w-full lg:w-[65%]">
+               <Ingredients ingredients={recipe.ingredients} />
+               <Directions instructions={recipe.instructions} />
+            </div>
+            <div className="w-full lg:w-[30%]">
+               <OtherRecipes currentId={id} />
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

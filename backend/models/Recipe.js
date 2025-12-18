@@ -19,6 +19,11 @@ const Recipe = sequelize.define("Recipe", {
     allowNull: false,
     defaultValue: "30 Minutes",
   },
+  cookTime: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: "15 Minutes",
+  },
   category: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -28,6 +33,10 @@ const Recipe = sequelize.define("Recipe", {
     allowNull: true,
   },
   instructions: {
+    type: DataTypes.JSON,
+    allowNull: true,
+  },
+  nutrition: {
     type: DataTypes.JSON,
     allowNull: true,
   },
